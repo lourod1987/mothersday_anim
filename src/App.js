@@ -1,23 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useSpring, animated, config } from 'react-spring';
 import './App.scss';
 
 function App() {
+  const opacity = useSpring({ config: { duration: 2500 }, opacity: 1, from: { opacity: 0 }, delay: 3200});
+  const animate1 = useSpring({ config: { duration: 2500 }, from: {marginTop: -2000}, to: { marginTop: 0 }, delay: 200 });
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <animated.div className="happyday">Happy</animated.div>
+          <animated.div className="mother" style={animate1}>Mother's</animated.div>
+          <animated.div className="happyday" style={opacity}>Day!</animated.div>
+        <div className="heart-shape"></div>
       </header>
     </div>
   );
